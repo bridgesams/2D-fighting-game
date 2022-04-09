@@ -89,7 +89,7 @@ const player = new Fighter({
 
 const enemy = new Fighter({
 	position: {
-	  x: 400,
+	  x: 800,
 	  y: 100
 	},
 	velocity: {
@@ -186,11 +186,11 @@ function animate() {
 	enemy.velocity.x = 0
 
 	//player movement
-	if(keys.a.pressed && player.lastKey === 'a'){
+	if(keys.a.pressed && player.lastKey === 'a' && player.position.x >= 0){
 		player.velocity.x = -5
 		player.switchSprite('run')
 	}
-	else if(keys.d.pressed && player.lastKey === 'd'){
+	else if(keys.d.pressed && player.lastKey === 'd' && player.position.x + 50 <=1024){
 		player.velocity.x = 5
 		player.switchSprite('run')
 	} else {
@@ -205,11 +205,11 @@ function animate() {
 	}
 
 	//enemy movement
-	if(keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft'){
+	if(keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x >= 0){
 		enemy.velocity.x = -5
 		enemy.switchSprite('run')
 	}
-	else if(keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight'){
+	else if(keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x + 50 <=1024){
 		enemy.velocity.x = 5
 		enemy.switchSprite('run')
 	} else {
@@ -277,6 +277,7 @@ window.addEventListener('keydown', (event) => {
 			player.lastKey = 'a'
 			break
 		case 'w':
+			if(player.velocity.y === 0)
 			player.velocity.y = -15
 			break
 			case ' ':
@@ -295,6 +296,7 @@ window.addEventListener('keydown', (event) => {
 			enemy.lastKey = 'ArrowLeft'
 			break
 		case 'ArrowUp':
+			if(enemy.velocity.y === 0)
 			enemy.velocity.y = -15
 			break
 		case 'ArrowDown':

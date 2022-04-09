@@ -13,8 +13,8 @@ function determineWinner({player,enemy,timerId}){
 	if(player.health === enemy.health){
 		document.querySelector('#displayText').innerHTML='Tie'
 	} else if(player.health > enemy.health){
-		document.querySelector('#displayText').innerHTML='Player 1 Wins!'
-	} else document.querySelector('#displayText').innerHTML='Player 2 Wins!'
+		document.querySelector('#displayText').innerHTML='Samurai Wins!'
+	} else document.querySelector('#displayText').innerHTML='Tenguu Wins!'
 }
 
 let timer = 60
